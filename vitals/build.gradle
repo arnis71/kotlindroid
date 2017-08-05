@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+
 
 android {
     compileSdkVersion 26
@@ -10,13 +12,79 @@ android {
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
-        versionName "0.1"
+        versionName "0.1.1"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+ext {
+    //For bintray and jcenter distribution
+    bintrayRepo = 'maven'
+    bintrayName = 'kotlindroid:vitals'
+
+    publishedGroupId = 'com.arnis.kotlindroid'
+    libraryName = 'kotlindroid_vitals'
+    artifact = 'vitals' //This artifact name should be the same with library module name
+
+    libraryDescription = 'Android vitals written in Kotlin'
+
+    siteUrl = 'https://github.com/kotlindroid/KotlinDroid'
+    gitUrl = 'https://github.com/kotlindroid/KotlinDroid'
+
+    libraryVersion = '0.1'
+
+    developerId = 'arnis71'
+    developerName = 'Arnis'
+    developerEmail = 'kotlindroid@gmail.com'
+    organization = 'kodr71' // if you push to organization's repository.
+    licenseName = 'The Apache Software License, Version 2.0'  //Example for license
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+}
+group = publishedGroupId // Maven Group ID for the artifact
+
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom.project {
+            groupId publishedGroupId
+            artifactId artifact
+
+            // Add your description here
+            name libraryName
+            description libraryDescription
+            url siteUrl
+
+            // Set your license
+            licenses {
+                license {
+                    name licenseName
+                    url licenseUrl
+                }
+            }
+            developers {
+                developer {
+                    id developerId
+                    name developerName
+                    email developerEmail
+                }
+            }
+            scm {
+                connection gitUrl
+                developerConnection gitUrl
+                url siteUrl
+
+            }
+        }
+
     }
 }
 
