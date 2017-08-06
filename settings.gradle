@@ -1,1 +1,1 @@
-include ':app', ':vitals'
+include ':app', ':vitals', ':mvp', ':rxbus', ':firebase'
