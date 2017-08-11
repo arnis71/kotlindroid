@@ -1,5 +1,6 @@
 package com.kotlindroid.vitals
 
+import android.annotation.TargetApi
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -7,6 +8,7 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.util.ArrayMap
 import android.util.Base64
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
@@ -37,6 +39,14 @@ class CachedList<out T>(val initializer: () -> List<T>) {
         list = initializer()
         return list
     }
+}
+
+@TargetApi(19)
+fun <K,V> arrayMapOf() = ArrayMap<K,V>()
+
+@TargetApi(19)
+fun <K,V> arrayMapOf(vararg values: Pair<K,V>) = ArrayMap<K,V>().apply {
+    values.forEach { (key,value) -> put(key, value) }
 }
 
 inline fun Boolean.ifTrue(body: EmptyBlock): Unit? {

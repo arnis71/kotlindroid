@@ -6,7 +6,7 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.kotlindroid.demo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,5 @@ dependencies {
     compile "io.reactivex.rxjava2:rxjava:2.1.0"
     compile project(':mvp')
     compile project(':vitals')
+    compile project(':rxbus')
 }

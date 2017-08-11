@@ -20,9 +20,8 @@ enum class SubMode {
 sealed class LifecycleMvp {
     interface View
 
-
     sealed class Surviving {
-        abstract class Presenter<VIEW: LifecycleMvp.View>: LifecycleObserver, LifecycleEvents {
+        abstract class Presenter<VIEW: LifecycleMvp.View>: LifecycleEvents {
             var view: VIEW? = null
                 private set
 
@@ -83,10 +82,9 @@ sealed class LifecycleMvp {
                 }
             }
         }
-
     }
 
-    abstract class Presenter<VIEW: LifecycleMvp.View>(var view: VIEW?): LifecycleObserver, LifecycleEvents {
+    abstract class Presenter<VIEW: LifecycleMvp.View>(var view: VIEW?): LifecycleEvents {
         override fun onDetach() {
             view = null
         }
@@ -113,7 +111,7 @@ sealed class LifecycleMvp {
     }
 }
 
-interface LifecycleEvents {
+interface LifecycleEvents: LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onAttach() {}
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
