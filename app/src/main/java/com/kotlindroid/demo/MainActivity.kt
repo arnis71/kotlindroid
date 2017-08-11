@@ -3,13 +3,13 @@ package com.kotlindroid.demo
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.kotlindroid.mvp.MVP
+import com.kotlindroid.mvp.Mvp
 import com.kotlindroid.vitals.bind
 import com.kotlindroid.vitals.err
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 
-class MainActivity : MVP.SurvivingActivity<PresenterImpl>(), MyView {
+class MainActivity : Mvp.SurvivingActivity<PresenterImpl>(), MyView {
     val textView by bind<TextView>(R.id.text)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +29,9 @@ class MainActivity : MVP.SurvivingActivity<PresenterImpl>(), MyView {
     }
 }
 
-class PresenterImpl: MVP.LifecyclePresenter<MyView>() {
+class PresenterImpl: Mvp.RxLifecyclePresenter<MyView>() {
     fun startCountdown() {
-        subscriptions.add(Observable.interval(1000,TimeUnit.MILLISECONDS).subscribe {
+        addSusbcription(Observable.interval(1000,TimeUnit.MILLISECONDS).subscribe {
             "UPDATING".err
             view?.showText(it.toString())
         })
@@ -42,7 +42,7 @@ class PresenterImpl: MVP.LifecyclePresenter<MyView>() {
 //    }
 }
 
-interface MyView : MVP.View {
+interface MyView : Mvp.View {
     fun onClick()
     fun showText(text: String)
 }
