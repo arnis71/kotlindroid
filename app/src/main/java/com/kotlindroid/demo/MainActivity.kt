@@ -3,13 +3,13 @@ package com.kotlindroid.demo
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.kotlindroid.mvp.Mvp
+import com.kotlindroid.mvp.LifecycleMvp
 import com.kotlindroid.vitals.bind
 import com.kotlindroid.vitals.err
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 
-class MainActivity : Mvp.SurvivingActivity<PresenterImpl>(), MyView {
+class MainActivity : LifecycleMvp.Surviving.Rx.Activity<PresenterImpl>(), MyView {
     val textView by bind<TextView>(R.id.text)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : Mvp.SurvivingActivity<PresenterImpl>(), MyView {
         findViewById<Button>(R.id.start).setOnClickListener { onClick() }
     }
 
-    override fun providePresenter() = PresenterImpl()
+    override fun providePresenter() = PresenterImpl().apply { "new presenter".err }
 
     override fun onClick() {
         presenter?.startCountdown()
@@ -29,20 +29,16 @@ class MainActivity : Mvp.SurvivingActivity<PresenterImpl>(), MyView {
     }
 }
 
-class PresenterImpl: Mvp.RxLifecyclePresenter<MyView>() {
+class PresenterImpl: LifecycleMvp.Surviving.Rx.Presenter<MyView>() {
     fun startCountdown() {
-        addSusbcription(Observable.interval(1000,TimeUnit.MILLISECONDS).subscribe {
+        addSubscription(Observable.interval(1000,TimeUnit.MILLISECONDS).subscribe {
             "UPDATING".err
             view?.showText(it.toString())
         })
     }
-
-//    override fun onDetach() {
-//        disp?.dispose()
-//    }
 }
 
-interface MyView : Mvp.View {
+interface MyView : LifecycleMvp.View {
     fun onClick()
     fun showText(text: String)
 }
