@@ -82,13 +82,12 @@ inline fun Any.safeFromException(block: EmptyBlock){
     }
 }
 
-inline fun fromApi(version: Int, block: EmptyBlock) {
-    if (Build.VERSION.SDK_INT >= version) block()
-}
-inline fun toApi(version: Int, block: EmptyBlock) {
-    if (Build.VERSION.SDK_INT <= version) block()
-}
-
+//inline fun fromApi(version: Int, block: EmptyBlock) {
+//    if (Build.VERSION.SDK_INT >= version) block()
+//}
+//inline fun toApi(version: Int, block: EmptyBlock) {
+//    if (Build.VERSION.SDK_INT <= version) block()
+//}
 
 fun ByteArray.toBitmap() = BitmapFactory.decodeByteArray(this, 0, this.size)
 
