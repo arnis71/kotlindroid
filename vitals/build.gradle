@@ -18,32 +18,32 @@ android {
         }
     }
 }
-//
-//ext {
-//    bintrayRepo = 'maven'
-//    bintrayName = 'kotlindroid:vitals'
-//
-//    publishedGroupId = 'com.arnis.kotlindroid'
-//    libraryName = 'kotlindroid_vitals'
-//    artifact = 'vitals'
-//
-//    libraryDescription = 'Android vitals written in Kotlin'
-//    libraryVersion = vitals
-//
-//    siteUrl = 'https://github.com/arnis71/KotlinDroid'
-//    gitUrl = 'https://github.com/arnis71/KotlinDroid'
-//
-//    developerId = 'arnis71'
-//    developerName = 'Arnis'
-//    developerEmail = 'arnis71@gmail.com'
-//    organization = 'arnis71'
-//    licenseName = 'The Apache Software License, Version 2.0'
-//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//    allLicenses = ["Apache-2.0"]
-//}
-//
-//apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/install.gradle'
-//apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'kotlindroid:vitals'
+
+    publishedGroupId = 'com.arnis.kotlindroid'
+    libraryName = 'kotlindroid_vitals'
+    artifact = 'vitals'
+
+    libraryDescription = 'Android vitals written in Kotlin'
+    libraryVersion = vitals
+
+    siteUrl = 'https://github.com/arnis71/KotlinDroid'
+    gitUrl = 'https://github.com/arnis71/KotlinDroid'
+
+    developerId = 'arnis71'
+    developerName = 'Arnis'
+    developerEmail = 'arnis71@gmail.com'
+    organization = 'arnis71'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/install.gradle'
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

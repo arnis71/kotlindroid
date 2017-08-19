@@ -119,11 +119,13 @@ fun ImageView.getImageByteArray() : ByteArray = (drawable as BitmapDrawable).bit
 
 fun AppCompatActivity.bitmapFromRes(resId: Int) = BitmapFactory.decodeResource(resources,resId)
 
-fun Context.dpToPx(value: Int) = resources.displayMetrics.density * value
+//fun Context.dpToPx(value: Int) = resources.displayMetrics.density * value
 val View.screenHeight: Int
     get() = resources.displayMetrics.heightPixels
 val View.screenWidth: Int
     get() = resources.displayMetrics.widthPixels
+val View.density: Float
+    get() = resources.displayMetrics.density
 
 fun Activity.getStringRes(resId: Int) = resources.getString(resId)
 fun Context.getStringRes(resId: Int) = resources.getString(resId)

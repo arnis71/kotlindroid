@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Demo.iml" filepath="$PROJECT_DIR$/Demo.iml" />
+      <module fileurl="file://C:\Users\arnis\kotlindroid\Demo.iml" filepath="C:\Users\arnis\kotlindroid\Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kotlindroid.iml" filepath="$PROJECT_DIR$/kotlindroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxbus/rxbus.iml" filepath="$PROJECT_DIR$/rxbus/rxbus.iml" />
       <module fileurl="file://$PROJECT_DIR$/vitals/vitals.iml" filepath="$PROJECT_DIR$/vitals/vitals.iml" />
